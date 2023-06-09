@@ -1,0 +1,7 @@
+openapi-python-client
+pip-name
+setuptools
+wheel
+pylint
+pytest
+twine

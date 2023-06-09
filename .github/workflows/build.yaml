@@ -1,0 +1,41 @@
+name: Upload Terraform Cloud Python Client
+    
+on:
+  workflow_dispatch:
+  release:
+    types: [created]
+    
+jobs:
+  deploy:   
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Checkout tools repo
+        uses: actions/checkout@v3
+        with:
+          repository: libre-works/openapi-terraform-cloud
+          path: src       
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+        
+      - name: Install dependencies
+        run: |
+          ls -ltrh
+          pip3 install -r requirements.txt
+
+      - name: get module
+        
+
+      - name: Build and publish
+        env:
+          TWINE_USERNAME: $
+          TWINE_PASSWORD: $
+        run: |
+          python setup.py sdist bdist_wheel
+#          twine upload dist/*
