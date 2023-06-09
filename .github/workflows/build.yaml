@@ -37,7 +37,8 @@ jobs:
           rm -rf terraform-cloud-client
           ls -ltrh src
 
-      - uses: actions/upload-artifact@v3
+      - name: Build artifact
+        uses: actions/upload-artifact@v3
         with:
           name: terraform_cloud_client.whl
           path: dist/terraform_cloud_client-0.0.1-py3-none-any.whl
