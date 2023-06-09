@@ -42,6 +42,7 @@ jobs:
           TWINE_USERNAME: $
           TWINE_PASSWORD: $
         run: |
+          ls -ltrh 
           python3 build
           ls -ltrh dist
 
