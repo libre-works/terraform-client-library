@@ -22,11 +22,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.x"
+          python-version: "3.7"
 
       - name: Install dependencies
         run: |
-          ls -ltrh
           pip3 install -r requirements.txt
 
       - name: Generate client.
@@ -37,12 +36,7 @@ jobs:
           rm -rf terraform-cloud-client
           ls -ltrh src
 
-      - name: Build artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: terraform_cloud_client.whl
-          path: src/terraform_cloud_client-0.0.1-py3-none-any.whl
-
+ 
       - name: Build and publish
         env:
           TWINE_USERNAME: $
@@ -51,5 +45,10 @@ jobs:
           ls -ltrh 
           python3 -m build
           ls -ltrh dist
-
 #          twine upload dist/*
+
+      - name: Publish Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: terraform_cloud_client.whl
+          path: src/terraform_cloud_client-0.0.1-py3-none-any.whl
