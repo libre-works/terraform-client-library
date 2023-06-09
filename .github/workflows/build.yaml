@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: libre-works/openapi-terraform-cloud
+          path: openapi-terraform-cloud
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -29,7 +30,7 @@ jobs:
 
       - name: Generate client.
         run: |
-          openapi-python-client generate --path openapi-terraform-cloud/specifications/openapi-terraform-cloud.json  
+          openapi-python-client generate --path open-api-terraform-cloud/openapi-terraform-cloud/specifications/openapi-terraform-cloud.json  
           cp -r terraform-cloud-client/terraform_cloud_client/* src
           rm -rf terraform-cloud-client
           ls -ltrh src
