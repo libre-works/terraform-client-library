@@ -29,9 +29,6 @@ jobs:
           ls -ltrh
           pip3 install -r requirements.txt
 
-      - name: get module
-        
-
       - name: Build and publish
         env:
           TWINE_USERNAME: $
