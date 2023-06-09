@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir src
           openapi-python-client generate --path openapi-terraform-cloud/specifications/openapi-terraform-cloud.json  
-          cp -r terraform-cloud-client/terraform_cloud_client/* src
+          cp -r terraform-cloud-client/terraform_cloud_client src
           rm -rf terraform-cloud-client
           ls -ltrh src
 
