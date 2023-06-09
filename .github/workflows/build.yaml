@@ -43,7 +43,7 @@ jobs:
           TWINE_PASSWORD: $
         run: |
           ls -ltrh 
-          python3 build
+          python3 -m build
           ls -ltrh dist
 
 #          twine upload dist/*
