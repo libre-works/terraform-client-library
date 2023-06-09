@@ -41,9 +41,9 @@ jobs:
         env:
           TWINE_USERNAME: $
           TWINE_PASSWORD: $
-        run: |
-          ls -ltrh 
+        run: |          
           python3 -m build
+          ls -ltrh 
           ls -ltrh dist
 #          twine upload dist/*
 
@@ -51,4 +51,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: terraform_cloud_client.whl
-          path: terraform_cloud_client-0.0.1-py3-none-any.whl
+          path: dist/terraform_cloud_client-0.0.1-py3-none-any.whl
