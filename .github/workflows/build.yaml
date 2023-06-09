@@ -1,15 +1,14 @@
 name: Upload Terraform Cloud Python Client
-    
+
 on:
   workflow_dispatch:
   release:
     types: [created]
-    
-jobs:
-  deploy:   
 
+jobs:
+  deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v2
 
@@ -17,18 +16,23 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: libre-works/openapi-terraform-cloud
-          path: src       
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
-        
+          python-version: "3.x"
+
       - name: Install dependencies
         run: |
           ls -ltrh
-          ls -ltrh src/
           pip3 install -r requirements.txt
+
+      - name: Generate client.
+        run: |
+          openapi-python-client generate --path openapi-terraform-cloud/specifications/openapi-terraform-cloud.json  
+          cp -r terraform-cloud-client/terraform_cloud_client/* src
+          rm -rf terraform-cloud-client
+          ls -ltrh src
 
       - name: Build and publish
         env:
@@ -36,4 +40,5 @@ jobs:
           TWINE_PASSWORD: $
         run: |
           python setup.py sdist bdist_wheel
+
 #          twine upload dist/*
