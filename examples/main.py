@@ -17,6 +17,6 @@ client = AuthenticatedClient(
 # recieve a response back using authenticated client ----------------------------- 
 response: Response[list_workspaces] = list_workspaces.sync_detailed(
     client = client,
-    organization_name = "ecp-shell-prod")
+    organization_name = "******")
 
 print(f"Result:  {str(response.content)}")
